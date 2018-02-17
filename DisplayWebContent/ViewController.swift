@@ -40,6 +40,7 @@ class ViewController: UIViewController {
                     if let unwrappedData = data {
                         let dataString = NSString(data: unwrappedData, encoding: String.Encoding.utf8.rawValue) // convert data to string. standard enconding for url is utf8. returns specified format and lets NSString know what kind of encoding we want
                         print(dataString)
+                        // if we want to display the data once it's retrieved, must update UI straight away rather than waiting for after task has resumed/ran
                         DispatchQueue.main.sync(execute: {
                             //Update UI
                         })
@@ -50,7 +51,7 @@ class ViewController: UIViewController {
             task.resume()
         }
         
-        // let user know info is loading
+        // let user know info is loading with a message/progress bar while waiting for data to come back
     }
 
     override func didReceiveMemoryWarning() {
